@@ -12,6 +12,10 @@ struct LoginPage: View {
      @State var userName:String = ""
      @State var passWord:String = ""
 
+    @AppStorage("Paging") var Paging : Int = 0
+    
+    @AppStorage("userName") var AccountUsername : String = ""
+    @AppStorage("Password") var AccountPassWord : String = ""
     //body
     
     var body: some View {
@@ -47,7 +51,11 @@ struct LoginPage: View {
                 }
                 
                 Button {
-                   
+                    if AccountUsername == userName && AccountPassWord == passWord {
+                        
+                        Paging = 3
+                    }
+               
                     
                 } label: {
                     Text("Go")
@@ -66,6 +74,7 @@ struct LoginPage: View {
                     Text("Dont Have Account yet ?!")
                     
                     Button {
+                        Paging = 1
                         
                     } label: {
                         Text("Sign Up")

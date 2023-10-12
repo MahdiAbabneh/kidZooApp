@@ -9,9 +9,22 @@ import SwiftUI
 
 @main
 struct kides_zooApp: App {
+    @AppStorage("Paging")var paging:Int=0
+    init() {
+        paging=0
+    }
+
     var body: some Scene {
         WindowGroup {
-            LoginPage()
+            if paging==0{
+                LoginPage()
+            }
+            else if paging==1{
+                SignUp()
+            }
+            else{
+                mainView()
+            }
         }
     }
 }
